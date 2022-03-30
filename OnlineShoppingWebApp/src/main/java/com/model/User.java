@@ -1,35 +1,25 @@
 package com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="UserTable")
 public class User {
+	@Column(name="user_name")
+	private String userName;	
 	@Id
-	@GeneratedValue
-	private int userId;
-	private String role;
-	private String userName;
-	private String userEmail;
+	private String userEmail;	
 	private String userPassword;
 	private String userSAddress;
 	private String userBAddress;
 	public User() {
 		
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 	public String getUserName() {
 		return userName;
 	}

@@ -2,65 +2,65 @@ package com.model;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDAOImpl implements UserDAO{
+public class OrderDAOImpl implements OrderDAO{
+
 	@Autowired
 	SessionFactory sessionFactory;
-
 	
 	@Override
-	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		Session session=sessionFactory.openSession();
-		Query query=session.createQuery("select u from User u");
-		return query.list();
-	}
-
-	@Override
-	public void registerUser(User user) {
+	public void addOrder(Order order) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
 		session.getTransaction().begin();
-		session.save(user);
+		session.save(order);
 		session.flush();
 		session.getTransaction().commit();
+		
 		
 	}
 
 	@Override
-	public boolean deleteUser(String email) {
+	public Order findOrder(int id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		return session.get(Order.class, id);
+	}
+
+	@Override
+	public List<Order> findAllOrder() {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		return session.createQuery("Select o from Order o").list();
+	}
+
+	@Override
+	public boolean updateOrder(Order order) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
 		session.getTransaction().begin();
-		User user=session.get(User.class, email);
-		session.delete(user);
+		session.update(order);
 		session.flush();
 		session.getTransaction().commit();
+		
 		return true;
 	}
 
 	@Override
-	public User findUser(String email) {
-		// TODO Auto-generated method stub
-		Session session=sessionFactory.openSession();
-		User user=session.get(User.class, email);
-		return user;
-	}
-
-	@Override
-	public boolean updateUser(User user) {
+	public boolean deleteOrder(int id) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
 		session.getTransaction().begin();
-		session.update(user);
+		Order order=session.get(Order.class, id);
+		session.delete(order);
 		session.flush();
 		session.getTransaction().commit();
+		
 		return true;
 	}
 

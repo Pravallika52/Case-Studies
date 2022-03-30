@@ -19,12 +19,16 @@ public class UserServices {
 		userDAOImpl.registerUser(user);
 	}
 	
-	public User findUser(int id) {
-		return userDAOImpl.findUser(id);
+	public User findUser(String email) {
+		return userDAOImpl.findUser(email);
 	}
 	
-	public boolean deleteUser(int id) {
-		return userDAOImpl.deleteUser(id);
+	public boolean deleteUser(String email) {
+		return userDAOImpl.deleteUser(email);
+	}
+	
+	public boolean updateUser(User user) {
+		return userDAOImpl.updateUser(user);
 	}
 
 }

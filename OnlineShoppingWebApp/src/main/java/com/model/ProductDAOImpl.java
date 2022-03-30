@@ -29,10 +29,10 @@ public class ProductDAOImpl implements ProductDAO{
 	public void addProduct(Product product) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
+		session.getTransaction().begin();
 		session.save(product);
 		session.flush();
-		session.close();
-		
+		session.getTransaction().commit();
 	}
 
 	@Override
@@ -49,9 +49,10 @@ public class ProductDAOImpl implements ProductDAO{
 		// TODO Auto-generated method stub
 
 		Session session=sessionFactory.openSession();
+		session.getTransaction().begin();
 		session.update(product);
 		session.flush();
-		session.close();
+		session.getTransaction().commit();
 		return true;
 	}
 
@@ -60,9 +61,10 @@ public class ProductDAOImpl implements ProductDAO{
 		// TODO Auto-generated method stub
 		Product product=findProduct(id);
 		Session session=sessionFactory.openSession();
+		session.getTransaction().begin();
 		session.delete(product);
 		session.flush();
-		session.close();
+		session.getTransaction().commit();
 		return true;
 	}
 	

@@ -14,7 +14,7 @@ public class ProductService {
 		return productDAOImpl.getAllProducts();
 	}
 	
-	public void saveProduct(Product product) {
+	public void addProduct(Product product) {
 		productDAOImpl.addProduct(product);
 	}
 	

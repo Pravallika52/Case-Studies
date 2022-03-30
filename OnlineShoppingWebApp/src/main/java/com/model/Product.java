@@ -34,17 +34,17 @@ public class Product {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	public String getProductLocation() {
-		return productLocation;
-	}
-	public void setProductLocation(String productLocation) {
-		this.productLocation = productLocation;
-	}
 	public int getProductQuantity() {
 		return productQuantity;
 	}
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
+	}
+	public String getProductLocation() {
+		return productLocation;
+	}
+	public void setProductLocation(String productLocation) {
+		this.productLocation = productLocation;
 	}
 	
 	
